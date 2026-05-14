@@ -1,0 +1,7 @@
+{
+	"Imports":
+	[
+		{ "Name": "fable",         "Source": "bundled" },
+		{ "Name": "fable-settings","Source": "bundled" }
+	]
+}

@@ -25,6 +25,8 @@ The pattern `${...}` is recognized in any string value anywhere in the settings 
 ### Database configuration
 
 ```javascript
+const libFableSettings = require('fable-settings');
+
 let tmpSettings = new libFableSettings({
     MySQL: {
         Server: '${DB_HOST|localhost}',
@@ -34,6 +36,7 @@ let tmpSettings = new libFableSettings({
         Database: '${DB_NAME|myapp}'
     }
 });
+console.log('MySQL config (with env-var defaults):', tmpSettings.settings.MySQL);
 ```
 
 In development with no environment variables set, this resolves to the defaults. In production, set the environment variables and the same config file works.
@@ -41,9 +44,12 @@ In development with no environment variables set, this resolves to the defaults.
 ### Multiple variables in one string
 
 ```javascript
+const libFableSettings = require('fable-settings');
+
 let tmpSettings = new libFableSettings({
     ConnectionString: '${DB_USER|root}:${DB_PASSWORD}@${DB_HOST|localhost}:${DB_PORT|3306}'
 });
+console.log('ConnectionString:', tmpSettings.settings.ConnectionString);
 ```
 
 Each `${...}` pattern is resolved independently.
@@ -53,9 +59,12 @@ Each `${...}` pattern is resolved independently.
 Environment variables are resolved inside arrays too:
 
 ```javascript
+const libFableSettings = require('fable-settings');
+
 let tmpSettings = new libFableSettings({
     Hosts: ['${PRIMARY_HOST|host1}', '${SECONDARY_HOST|host2}']
 });
+console.log('Hosts:', tmpSettings.settings.Hosts);
 ```
 
 ## When Resolution Happens
@@ -73,6 +82,8 @@ Resolution is recursive -- nested objects are traversed and all string values ar
 Set `NoEnvReplacement` to `true` to prevent environment variable resolution entirely:
 
 ```javascript
+const libFableSettings = require('fable-settings');
+
 let tmpSettings = new libFableSettings({
     NoEnvReplacement: true,
     TemplateValue: '${THIS_STAYS_LITERAL}'
@@ -85,12 +96,17 @@ console.log(tmpSettings.settings.TemplateValue);
 This setting can also come from a config file. If a `ConfigFile` sets `NoEnvReplacement: true`, subsequent merges will not resolve environment variables:
 
 ```javascript
-// config.json contains: { "NoEnvReplacement": true }
+const libFableSettings = require('fable-settings');
+
+// Reference shape — `__dirname` is Node-only; we pass a literal path
+// that doesn't exist so the snippet runs in the playground (missing
+// config files are logged as warnings, never thrown).
 let tmpSettings = new libFableSettings({
-    ConfigFile: __dirname + '/config.json',
+    ConfigFile: '/nonexistent/config.json',
     Value: '${SOME_VAR|default}'
 });
 
+console.log('Value:', tmpSettings.settings.Value);
 // Value may or may not be resolved depending on when
 // NoEnvReplacement was encountered in the merge chain
 ```

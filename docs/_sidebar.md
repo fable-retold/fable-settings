@@ -13,3 +13,5 @@
   - [Fable-ServiceProviderBase](/fable/fable-serviceproviderbase/)
   - [Fable-Log](/fable/fable-log/)
   - [Fable-UUID](/fable/fable-uuid/)
+
+- [Code Playground](playground.md)

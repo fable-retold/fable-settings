@@ -43,7 +43,7 @@
   },
   "homepage": "https://github.com/stevenvelozo/fable-settings",
   "devDependencies": {
-    "pict-docuserve": "^1.0.1",
+    "pict-docuserve": "^1.2.0",
     "quackage": "^1.2.3"
   },
   "dependencies": {

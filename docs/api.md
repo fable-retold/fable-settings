@@ -7,18 +7,24 @@ Extends `CoreServiceProviderBase` from fable-serviceproviderbase.
 ```javascript
 const libFableSettings = require('fable-settings');
 let tmpSettings = new libFableSettings({ Product: 'MyApp' });
+console.log('via constructor:', tmpSettings.settings.Product);
 ```
 
 There is also a legacy factory method:
 
 ```javascript
+const libFableSettings = require('fable-settings');
 let tmpSettings = libFableSettings.new({ Product: 'MyApp' });
+console.log('via factory:', tmpSettings.settings.Product);
 ```
 
 ## Constructor
 
 ```javascript
-new FableSettings(pSettings, pServiceHash)
+const libFableSettings = require('fable-settings');
+// Constructor signature: new FableSettings(pSettings, pServiceHash)
+const tmpSettings = new libFableSettings({ Product: 'MyApp' }, null);
+console.log('serviceType:', tmpSettings.serviceType);
 ```
 
 | Parameter | Type | Required | Description |
@@ -75,7 +81,10 @@ If either config file is missing or unreadable, a warning is logged to the conso
 Deep merge settings from one object into another.
 
 ```javascript
+const libFableSettings = require('fable-settings');
+const tmpSettings = new libFableSettings({ Product: 'MyApp' });
 tmpSettings.merge({ NewKey: 'value' });
+console.log('after merge:', { Product: tmpSettings.settings.Product, NewKey: tmpSettings.settings.NewKey });
 ```
 
 | Parameter | Type | Required | Description |
@@ -98,7 +107,11 @@ tmpSettings.merge({ NewKey: 'value' });
 Fill in missing settings without overwriting existing values.
 
 ```javascript
-tmpSettings.fill({ MaybeNew: 'only if missing' });
+const libFableSettings = require('fable-settings');
+const tmpSettings = new libFableSettings({ Product: 'Original' });
+tmpSettings.fill({ Product: 'IgnoredBecauseExists', MaybeNew: 'only if missing' });
+console.log('Product (untouched):', tmpSettings.settings.Product);
+console.log('MaybeNew (filled):', tmpSettings.settings.MaybeNew);
 ```
 
 | Parameter | Type | Required | Description |
@@ -119,7 +132,10 @@ tmpSettings.fill({ MaybeNew: 'only if missing' });
 Returns a fresh copy of the built-in default settings.
 
 ```javascript
+const libFableSettings = require('fable-settings');
+const tmpSettings = new libFableSettings({ Product: 'MyApp' });
 let tmpDefaults = tmpSettings.buildDefaultSettings();
+console.log('defaults:', tmpDefaults);
 ```
 
 **Returns:** A new object with the default configuration:
@@ -161,4 +177,5 @@ Legacy factory function. Returns a new `FableSettings` instance.
 ```javascript
 const libFableSettings = require('fable-settings');
 let tmpSettings = libFableSettings.new({ Product: 'MyApp' });
+console.log('Product via legacy factory:', tmpSettings.settings.Product);
 ```

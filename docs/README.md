@@ -51,11 +51,17 @@ Later layers override earlier ones. If a file is missing or unreadable, the chai
 Point at JSON config files and they are loaded and merged automatically:
 
 ```javascript
+const libFableSettings = require('fable-settings');
+
+// Reference shape — in real Node code you'd use __dirname.  We pass
+// a literal here so the snippet runs in the playground; missing files
+// are silently warned about, never thrown.
 let tmpSettings = new libFableSettings({
     Product: 'MyApp',
-    DefaultConfigFile: __dirname + '/default-config.json',
-    ConfigFile: __dirname + '/config.json'
+    DefaultConfigFile: '/nonexistent/default-config.json',
+    ConfigFile: '/nonexistent/config.json'
 });
+console.log('Product:', tmpSettings.settings.Product);
 ```
 
 `DefaultConfigFile` loads first, then `ConfigFile` overrides it. Both are optional -- if either is missing, a warning is logged and execution continues.
@@ -65,11 +71,16 @@ let tmpSettings = new libFableSettings({
 String values in settings can reference environment variables with fallback defaults:
 
 ```javascript
+const libFableSettings = require('fable-settings');
+
 let tmpSettings = new libFableSettings({
     DatabaseHost: '${DB_HOST|localhost}',
     DatabasePort: '${DB_PORT|5432}',
     SecretKey: '${SECRET_KEY}'
 });
+console.log('Host:',   tmpSettings.settings.DatabaseHost);
+console.log('Port:',   tmpSettings.settings.DatabasePort);
+console.log('Secret:', JSON.stringify(tmpSettings.settings.SecretKey));
 ```
 
 If `DB_HOST` is set in the environment, its value is used. Otherwise the default after the `|` is used. If there is no default and the variable is not set, the value becomes an empty string.
@@ -81,6 +92,9 @@ See [Environment Variables](environment-variables.md) for details.
 After construction, you can merge additional settings in:
 
 ```javascript
+const libFableSettings = require('fable-settings');
+let tmpSettings = new libFableSettings({ Product: 'OriginalName' });
+
 // merge() overwrites existing keys
 tmpSettings.merge({ NewSetting: 'value', Product: 'NewName' });
 console.log(tmpSettings.settings.Product);     // 'NewName'
