@@ -9,9 +9,9 @@
 
 - Retold Ecosystem
 
-  - [Fable](/fable/fable/)
-  - [Fable-ServiceProviderBase](/fable/fable-serviceproviderbase/)
-  - [Fable-Log](/fable/fable-log/)
-  - [Fable-UUID](/fable/fable-uuid/)
+  - [Fable](https://stevenvelozo.github.io/fable/)
+  - [Fable-ServiceProviderBase](https://stevenvelozo.github.io/fable-serviceproviderbase/)
+  - [Fable-Log](https://stevenvelozo.github.io/fable-log/)
+  - [Fable-UUID](https://stevenvelozo.github.io/fable-uuid/)
 
 - [Code Playground](playground.md)

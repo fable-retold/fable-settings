@@ -1,5 +1,7 @@
 # Fable Settings
 
+> **[&#9654; Read the Fable-Settings Documentation](https://stevenvelozo.github.io/fable-settings/)** &mdash; interactive docs with the full API reference.
+
 A simple, tolerant configuration chain for Fable applications. Merges default settings, constructor overrides, JSON config files, and environment variables into a single settings object -- with deep merge, fill-without-overwrite, and `${ENV_VAR|default}` template syntax.
 
 [![Build Status](https://github.com/stevenvelozo/fable-settings/workflows/Fable-Settings/badge.svg)](https://github.com/stevenvelozo/fable-settings/actions)
