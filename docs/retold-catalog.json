@@ -1,7 +1,7 @@
 {
-	"Generated": "2026-05-22T05:38:27.573Z",
+	"Generated": "2026-05-26T18:18:43.494Z",
 	"Mode": "module",
-	"GitHubOrg": "stevenvelozo",
+	"GitHubOrg": "fable-retold",
 	"DefaultBranch": "master",
 	"Module": {
 		"Name": "fable-settings",
@@ -38,19 +38,19 @@
 				"Children": [
 					{
 						"Title": "Fable",
-						"Path": "fable/fable/README.md"
+						"Path": "https://fable-retold.github.io/fable/README.md"
 					},
 					{
 						"Title": "Fable-ServiceProviderBase",
-						"Path": "fable/fable-serviceproviderbase/README.md"
+						"Path": "https://fable-retold.github.io/fable-serviceproviderbase/README.md"
 					},
 					{
 						"Title": "Fable-Log",
-						"Path": "fable/fable-log/README.md"
+						"Path": "https://fable-retold.github.io/fable-log/README.md"
 					},
 					{
 						"Title": "Fable-UUID",
-						"Path": "fable/fable-uuid/README.md"
+						"Path": "https://fable-retold.github.io/fable-uuid/README.md"
 					}
 				]
 			},
