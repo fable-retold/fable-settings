@@ -153,4 +153,4 @@ console.log(_Fable.settings.MySQL.Server);  // value of DB_HOST or 'localhost'
 
 - [Environment Variables](environment-variables.md) -- Template syntax and disabling resolution
 - [API Reference](api.md) -- Complete method and property documentation
-- [Fable](https://stevenvelozo.github.io/fable/) -- The core ecosystem that uses fable-settings
+- [Fable](https://fable-retold.github.io/fable/) -- The core ecosystem that uses fable-settings

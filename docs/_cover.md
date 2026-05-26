@@ -11,4 +11,4 @@ Load settings from defaults, constructor parameters, JSON files, and environment
 
 [Get Started](README.md)
 [API Reference](api.md)
-[GitHub](https://github.com/stevenvelozo/fable-settings)
+[GitHub](https://github.com/fable-retold/fable-settings)
